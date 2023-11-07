@@ -1,0 +1,109 @@
+﻿/***   对中文用户  ***/
+Nationstech.N32G031_Library.1.0.4版本：
+1. n32g031.h文件中RCC_CFG2_ADC1MSEL宏定义修改
+2. PACK包中pdsc文件030的字样改成031
+3. n32g031_rtc.c文件中，修改RTC_EnterInitMode(void)函数；
+4. n32g031_lptim.c文件中，删除LPTIM_TRIG_SOURCE_COMP2 的注释描述；
+5. n32g031_lptim.h文件中，删除LPTIM_TRIG_SOURCE_COMP2 的宏定义；
+6. system_n32g031.c和PWR-STOP例程中添加等待HSE稳定延时
+7. n32g031_rtc.h文件中,修改RTC_GetTime 和RTC_GetSubSecond函数,在函数最后读取RTC_DATE寄存器
+8. n32g031_comp.c文件，新增 COMP_ClrIntStatus 函数
+9. CompOut Demo中新增比较器中断功能
+10.I2C_Slave_Int 和I2C_Slave Demo中新增注意事项
+11.KeyInterrupt Demo中新增GPIO模式配置
+12.RtcAutoWakeUp Demo中, 修改n32g031_it.c文件中的RTC_IRQHandler函数
+13.LPUART Interrupt_ok、USART Interrupt_ok例程中添加错误判断及清除，并关闭断言
+14.LPUART DMA_Interrupt例程优化
+15.OpaAdByTim例程中删除PB12作为TIM1的消隐源功能
+16.n32g031_rcc.c文件中，修改RCC_ConfigLse()函数
+
+Nationstech.N32G031_Library.1.0.3版本：
+1. 修改FLASH驱动及注释
+1）修改AC_LATENCY_MSK、RDP_USER_Key宏定义值
+2）FLASH_SetLatency函数增加注释描述，增加latency对应的时钟范围
+3）删除FLASH_Unlock、FLASH_Lock、FLASH_GetSTS、FLASH_WaitForLastOpt函数多余注释
+4）修改FLASH_ConfigALLOptionByte函数参数WRP_Pages注释及data移位操作，新增FLASH_NO_WRPR_Pages宏定义
+5）修改FLASH_ConfigUserOB的参数rdpuser_tmp赋值的值
+6）修改FLASH_INTConfig、FLASH_GetFlagSTS函数的输入参数及新增ECC错误相关参数，并修改检查宏定义
+2. TIM的DMA Burst的功能只对TIMx_DCTRL以及之前的寄存器有效。修改TIM驱动C文件中TIM_ConfigDma函数的注释，以及TIM驱动头文件TIM_DMABASE的宏定义
+3. 删除void ADC_EnableTempSensorVrefint(FunctionalState Cmd)
+4.修改system_n32g031.c文件中的系统时钟配置宏定义方式
+5.修改RCC驱动中的RCC_ConfigPll函数，添加RCC_PLLSource寄存器配置
+6.修改RCC_ClockConfig例程中的pll配置代码，PLLOUT要在48~72M范围内，并优化部分注释
+
+Nationstech.N32G031_Library.1.0.2版本：
+1. I2C EEPROM例程优化中断/DMA方式
+2. LPUART驱动修改RTSEN\CTSEN宏定义
+3. Example中的readme增加英文描述
+4. OC1M的名字改成OC1MD
+5. RTC日历初始化驱动由3个函数合为1个函数，并在函数内新增可开启和关闭的1秒延时功能，延时计数调用TIM6和SysTick模块，可根据宏切换
+6. 基于新版日历初始化驱动函数，RTC各demo中相关配置代码均有同步更新和优化
+7. RCC驱动添加LSE Trim配置函数，更新所有调用到LSE配置函数的驱动及例程
+8. 修改SPI_Flash Demo里的W25Q扇区擦除指令为0x20
+9. 修改Beeper驱动，删除调用系统进入/退出LP RUN模式的代码，防止Beeper进入Beeper的LPRUN而使整个系统进入系统LP RUN
+10. 修改TIM的example中的注释
+11. 修改比较器的参考输入比较电压的宏
+12. 修改RCC_CFG_SCLKSW的宏定义
+13. 增加ADC内部通道Vrefint的采样demo
+14. CompOut demo中增加中断的配置
+15. RCC驱动添加FIN/N*M及FIN/N限制,超范围编译报错
+16. OpaAdByTim的demo修改ADC1M时钟源为HSI
+
+Nationstech.N32G031_Library.1.0.1版本：
+1. 修改OPAMP的VMSEL的宏定义
+
+
+
+/***   For English users   ***/
+Nationstech.N32G031_Library.1.0.4 version：
+1. Modify RCC_CFG2_ADC1MSEL macro in n32g031.h
+2. Modify 030 to 031 in pdsc file of PACK
+3. Modify the RTC_EnterInitMode(void) function in the n32g031_rtc.c file
+4. Delete the comment description about LPTIM_TRIG_SOURCE_COMP2 in n32g031_lptim.c
+5. Delete  LPTIM_TRIG_SOURCE_COMP2 macro defination in n32g031_lptim.h
+6. Add wait HSE stable delay in system_n32g031.c and PWR-STOP demo 
+7. RTC_GetTime and RTC_GetSubSecond function read RTC_DATE register in the end in the n32g031_rtc.c file
+8. Add COMP_ClrIntStatus function in n32g031_comp.c file
+9. Add interrupt configuration in CompOut demo
+10.Add notes in I2C_Slave_Int and I2C_Slave Demo 
+11.Add GPIO mode configuration in KeyInterrupt Demo 
+12.modify RTC_IRQHandler function in RtcAutoWakeUp Demo in n32g031_it.c file
+13. LPUART Interrupt_ok、USART Interrupt_ok demo add error flag check and clear, and disable assert
+14. LPUART DMA_Interrupt demo update
+15.Delete PB12 as the blinking source function for TIM1 in the OpaAdByTim demo
+16.Modify the RCC_ConfigLse() function in the n32g031_rcc.c file
+
+Nationstech.N32G031_Library.1.0.3 version：
+1. Modify FLASH drive and note
+1) Modify AC_ LATENCY_ MSK、RDP_ USER_ Key macro definition value
+2）FLASH_ SetLatency function adds a comment description and the clock range corresponding to latency
+3) Remove FLASH_ Unlock、FLASH_ Lock、FLASH_ GetSTS、FLASH_ WaitForLastOpt function extra comment
+4) Modify FLASH_ ConfigALLOptionByte function parameter WRP_Pages annotation and data shift operation, add FLASH_NO_WRPR_Pages Macro Definition
+5) Modify FLASH_ConfigUserOB's Parameter rdpuser_tmp  Value assigned
+6) Modify  Input parameters of FLASH_INTConfig and FLASHGetFlagSTS functions and new ECC error related parameters, and modify the check macro definition
+2. TIMx_DCTRL's subsequent registers cannot apply the DMABurst function, and modify the corresponding code
+3. Delete void ADC_EnableTempSensorVrefint(FunctionalState Cmd)
+4.Modify the way the system clock configuration macros are defined in the system_n32g031.c file
+5.Modify the RCC_ConfigPll function in the RCC driver and add RCC_PLLSource register configuration
+6.Modify the pll configuration code in the RCC_ClockConfig demo, PLLOUT should be in the range of 48~72M, and optimize some comments
+
+Nationstech.N32G031_Library.1.0.2 version：
+1. I2C EEPROM example optimizes interrupt/DMA mode
+2. Lpuart driver modifies RTSEN\CTSEN macro definition
+3. Add English description to readme in example
+4. Modify the name of OC1M to OC1MD
+5. The RTC calendar initialization driver is composed of 3 functions into one function, and a 1-second delay function that can be turned on and off is added in the function. The delay count calls the TIM6 and SysTick modules, which can be switched according to the macro.
+6. Based on the new version of the calendar initialization driver function, the relevant configuration codes in each RTC demo are updated and optimized synchronously
+7. RCC drive adds LSE Trim configuration function, update all drives and demo that call LSE configuration functions.
+8. Modify the W25Q sector erase command in SPI_Flash Demo to 0x20
+9. Modify the Beeper driver, delete the code that calls the system to enter/exit the LP RUN mode, and prevent the Beeper from entering the Beeper's LPRUN and making the entire system enter the system LP RUN
+10. Modify the remark in example of TIM
+11. Modify macro of reference input compare voltage in COMP
+12. Modify macro of RCC_CFG_SCLKSW
+13. Added ADC internal channel Vrefint sample demo
+14. Added interrupt configuration in CompOut demo
+15. RCC driver add FIN/N*M and FIN/N limit, an error was reported for over-range compilation
+16. Modify the clock source of ADC1M is from HSI
+
+Nationstech.N32G031_Library.1.0.1 version：
+1. Modify VMSEL macro of OPAMP
